@@ -1,8 +1,0 @@
-Flask===2.2.2
-wheel
-flask_mongoengine
-flasgger
-setuptools
-psycopg2
-jwt
-pymongo
