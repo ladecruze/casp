@@ -73,8 +73,8 @@ def signup_user():
     if request.method == 'POST':
         username = request.form.get('username')
         email = request.form.get('email')
-        password = hashlib.md5(request.args.get('password')).hexdigest()
-        role = request.args.get('role')
+        password = hashlib.md5(request.form.get('password').encode('utf8')).hexdigest()
+        role = request.form.get('role')
         secret = secrets.token_urlsafe(32)
         conn = getConnection()
         cur = conn.cursor()
