@@ -29,7 +29,7 @@ services:
     environment:
       DB_HOST: db
       DB_PORT: 5432
-      DB_USER: postgres
+      DB_USER: casp
       DB_PASSWORD: root
       DB_NAME: casp
     links:
