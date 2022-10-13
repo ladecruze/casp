@@ -11,7 +11,7 @@ import CASP.init_db
 
 def getConnection():
     conn = psycopg2.connect(host='casp-db-1',
-                            database='postgres',
+                            database='casp',
                             user=os.environ['DB_USERNAME'],
                             password=os.environ['DB_PASSWORD'])
     return conn
