@@ -3,7 +3,7 @@ services:
   db:
     image: postgres:14.5
     environment:
-      - POSTGRES_USER=casp
+      - POSTGRES_USERNAME=casp
       - POSTGRES_PASSWORD=root
       - POSTGRES_DB=casp
     ports:
