@@ -1,0 +1,43 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:14.5
+    environment:
+      - POSTGRES_USER=casp
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=casp
+    ports:
+      - '5432:5432'
+    volumes: 
+      - db:/var/lib/postgresql/data
+      - ./initdb.sql:/docker-entrypoint-initdb.d/initdb.sql
+
+  mongodb:
+    image: mongo:5.0
+    ports:
+      - 27017:27017
+    volumes:
+      - ~/apps/mongo:/data/db
+    
+  app:
+    build: .
+    image: casp
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: root
+      DB_NAME: casp
+    links:
+      - db
+    volumes:
+      - .:/CASP
+       
+volumes:
+  db:
+    driver: local
+    
