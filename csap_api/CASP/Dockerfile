@@ -12,4 +12,4 @@ RUN pip install -r requirements.txt
 
 EXPOSE 8000
 
-CMD [ "flask","run","-p","8000" ]
+CMD [ "flask","--debug", "run","-p","8000" ]

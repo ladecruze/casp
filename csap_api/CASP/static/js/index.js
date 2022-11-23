@@ -20,8 +20,7 @@ jQuery(document).ready(function($) {
     template: '#template',
     criterias:[
       {field: 'amount', ele: '#price_filter', type: 'range'},
-      {field: 'category', ele: '#category :checkbox'},
-      {field: 'performance', ele: '#performance :checkbox'}
+      {field: 'category', ele: '#category :checkbox'}
     ],
 
     search: { ele: '#search_box' }

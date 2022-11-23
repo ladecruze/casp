@@ -6,3 +6,6 @@ setuptools
 psycopg2
 jwt
 pymongo
+apispec
+marshmallow
+apispec-webframeworks

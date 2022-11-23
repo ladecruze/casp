@@ -1,6 +1,10 @@
 import secrets, os, psycopg2, hashlib, json
 from flask import abort, render_template, request, Flask, jsonify
 from flasgger import Swagger
+from apispec import APISpec
+from apispec.ext.marshmallow import MarshmallowPlugin
+from apispec_webframeworks.flask import FlaskPlugin
+from marshmallow import Schema, fields
 
 app = Flask(__name__)
 
@@ -15,6 +19,13 @@ def getConnection():
                             user=os.environ['DB_USERNAME'],
                             password=os.environ['DB_PASSWORD'])
     return conn
+
+spec = APISpec(
+    title='Hackify',
+    version='1.0.10',
+    openapi_version='2.0',
+    plugins=[MarshmallowPlugin()]
+)
 
 swagger = Swagger(app)
 
@@ -58,6 +69,20 @@ def signup_user():
             description: "Invalid ID supplied"
           404:
             description: "todo item not found"
+        parameters:
+            - in: formData
+              name: username
+              type: string
+              description: username of the account
+            - in: formData
+              name: email
+              type: email
+              description: username of the account
+            - in: formData
+              name: password
+              type: string
+              format: password
+              description: username of the account
     get:
         produces:
         - "text/html"
